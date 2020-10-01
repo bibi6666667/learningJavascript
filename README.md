@@ -1,2 +1,2 @@
-# learning-Javascript
+# learningJavascript
 repository for learning Javascript.
