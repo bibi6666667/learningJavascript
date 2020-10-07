@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>구구단 출력 프로그램 - 웹 버전(+개선)</h2>
+출력할 단 : <input type="text" id="num">
+<button onclick="runGugudan()">출력하기</button>
+<script>
+    function runGugudan() {
+        var strN = document.getElementById("num").value;
+        console.log(strN);
+        var num = Number(strN);
+        if (num >= 2 && num <= 9) {
+            document.write("<h3>" + num + "단</h3>")
+            for (var i = 1; i <= 9; i++) {
+                var ret = num * i;
+                document.write(num + "*" + i + "=" + ret + "<br>");
+            }
+        } else if (num < 2 || num > 9) {
+            document.write('2 이상, 9 이하의 숫자만 입력할 수 있습니다.')
+        } else {
+            document.write('숫자만 입력할 수 있습니다.')
+        }
+    }
+
+
+</script>
+</body>
+</html>
