@@ -5,6 +5,26 @@
     <title>Title</title>
 </head>
 <body>
+<h2>연습문제2 - 소수 판별 프로그램</h2>
+<script>
+    var num = Number(prompt('숫자를 입력해 주세요'));
+    var prime_num = 0
+    //num을 받아 1,2,3,4,.. ~ num까지 나눠 본다.(반복)
+    for (var i = 1; i <= num; i++) {
+        rem = num % i;
+        console.log(rem);
+        if (rem === 0) {
+            prime_num += 1;
+        }
+    }
+    // 만약 1,num으로 나눈 나머지가 0이면 소수이다.
+    // 만약 1,num,다른 수로 나눈 나머지가 0이면 소수가 아니다.
+    if (prime_num <= 2) {
+        console.log(num+'은 소수입니다.')
+    } else if (prime_num > 2){
+        console.log(num+'은 소수가 아닙니다.')
+    }
 
+</script>
 </body>
 </html>
