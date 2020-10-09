@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>코코아 테스트1</h2>
+길이 1이상, 100이하인 글자로 입력해 주세요.<br>
+가운데 글자를 가져옵니다. (콘솔 버전)<br>
+<input type="text" id="input">
+<button onclick="testlength()">가운데 글자를 보여줘</button>
+<script>
+    function testlength() {
+        var s = document.getElementById("input").value;
+        var num = s.length;
+        //문자 체크-문자 길이 체크 - solution()으로
+        if (num < 1 || num > 100) {
+            console.log("길이 1이상, 100이하인 글자로 입력해 주세요.");
+        } else {
+            solution(s, num);
+        }
+    }
+
+    function solution(s, num) {
+        if (num % 2 === 1) {
+            console.log('홀수 글자!');
+            var slicenum = ((num + 1) / 2) - 1
+            console.log(slicenum);
+            var str = s.slice(slicenum, slicenum + 1);
+            console.log(str);
+        } else if (num % 2 === 0) {
+            console.log('짝수 글자!');
+            var slicenum1 = (num / 2) - 1
+            var slicenum2 = (num / 2) + 1
+            console.log(slicenum1, slicenum2);
+            var str = s.slice(slicenum1, slicenum2);
+            console.log(str);
+        }
+    }
+</script>
+</body>
+</html>
