@@ -22,37 +22,33 @@
         } else if (Number.isInteger(int) === false) {
             console.log('2 이상 1000000 이하의 자연수를 입력해 주세요.')
         } else if (Number.isInteger(int) === true) {
-            testprime(int);
+            getnum(int);
         }
     }
 
-    function testprime(int) {
+    function getnum(int) {
         //1과 int사이 숫자를 모두 가져오기(num)
+        var primenum = 0;
         for (var num = 2; num <= int; num++) {
-            console.log('1과 입력받은 수 사이에는 ' + num + ' (이/가) 있다');
-            var remain0num = 0; //나머지0인 인수의 갯수
-            var primenum = 0;
+            console.log('1과' + int + '사이에는 ' + num + ' (이/가) 있다');
+            var remain0 = 0; //나머지0인 인수의 갯수
             for (var i = 1; i <= num; i++) {
                 if (num % i === 0) {
-                    console.log(num+ '을' +i + '(으)로 나눴을 때 나머지가 0이다');
-                    remain0num += 1;
-                    console.log('나머지가0인 인수는'+ remain0num +'개');
+                    console.log(num + '을' + i + '(으)로 나눴을 때 나머지가 0이다');
+                    remain0 += 1;
+                    console.log('나머지가 0인 인수는' + remain0 + '개');
+
                 }
-                // if (remain0num === 2) {
-                //     primenum += 1;
-                // }
+            }
+            if (remain0 === 2) {
+                console.log(num + '은/는 소수')
+                primenum += 1;
             }
         }
-        // 4을 입력한다.
-        //1부터 4 사이 숫자들을 구한다.(2,3,4) -완료(num)
-        // 그 숫자들이 각각 소수인지 아닌지 판별한다.
-        // 2가 소수인가? %1=0, %2=0으로 나머지0인 인수가 1,2뿐 -> 소수
-        // 3이 소수인가? %1=0,%2=1,%3=0으로 나머지0인 인수가 1,3뿐  ->소수
-        // 4가 소수인가? %1=0, %2=0, %3=1, %4=0으로 나머지0인 인수가 1,2,4-> 소수아님
-        // 소수 = 나머지0인 인수의 갯수가 2개뿐.
-        // 소수로 판별된 숫자의 갯수를 알려준다.
-        console.log('1과' + int + '사이 소수의 개수는' + remain0num + '입니다.')
+        console.log(primenum);
     }
+
 </script>
+2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,
 </body>
 </html>
