@@ -1,49 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script>
-        numbers = {}; // 객체
-        numbers.all = []; //속성)숫자 배열
-        numbers.prime = []; //속성)소수 배열
-
-        numbers.addAll = function (max_num) {
-            for (var i = 1; i < max_num; i++) {
-                this.all[i] = i;
-            }
-        };//
-        numbers.isPrime = function (number) {
-            for (var i = 1; i < number; i++ ){
-                if (number % i === 0){
-                    this.prime.push(number)
-
-                }
-            }
-            // 소수 = 나머지가 0인 인수가 1과 자기자신뿐.
-
-        };// 메서드)소수인지 판단
-        numbers.addPrime = function () {
-
-        };// 메서드)소수라면 소수 배열에 추가
-        numbers.getAllPrimes = function () {
-
-        };// 메서드) 소수 전체 가져오기
-
-
-    </script>
 
 </head>
 <body>
-1부터 10000까지 모든 숫자를 구해 배열에 넣는다
-그 숫자들이 소수인지 아닌지 판단한 뒤,
-소수라면 소수 배열에 넣는다
-구한 소수들을 화면에 출력한다
-<h1>1부터 10000사이의 소수를 출력합니다!</h1>
-<button onclick="numbers.addAll(10000)">구하기</button>
-<h3>1부터 10000 사이 숫자들</h3>
-<p class="numP"></p>
-<h3>1부터 10000 사이 소수들</h3>
-<p class="primeP"></p>
+<div id="result"></div>
+<script>
+        var numbers = {}; // 객체
+        numbers.all = []; //속성)숫자 배열
+        numbers.prime = []; //속성)소수 배열
+
+        numbers.isPrime = function (number) {
+            for (var i = 2; i < number; i++) {
+                if (number % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        };
+
+        numbers.addAllNumber = function (max_num) {
+            for (var i = 2; i <= max_num; i++) {
+                this.all.push = i;
+            }
+        };//
+
+
+        numbers.calcPrimes = function () {
+            for (var i=0; i < this.all.length; i++) {
+                var n = this.all[i];
+                if (this.isPrime(n)) {
+                    this.prime.push(n);
+                }
+            }
+        };// 메서드)소수라면 소수 배열에 추가
+
+        numbers.getAllPrimeNumbers = function () {
+            var ret = "";
+            ret += "<h2>전체 소수의 갯수:" +this.prime.length+ "</h2>";
+            for (var i = 0; i < this.prime.length; i++){
+                ret += (i+1) + "번째 소수" + this.prime[i] + "<br>";
+            }
+            return ret;
+        };// 메서드) 소수 전체 가져오기
+
+        numbers.addAllNumber(10000);
+        numbers.calcPrimes();
+        document.getElementById('result').innerHTML = numbers.getAllPrimeNumbers();
+
+    </script>
 </body>
 </html>
