@@ -2,54 +2,55 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+
     <title>Title</title>
 
 </head>
 <body>
 <div id="result"></div>
 <script>
-        var numbers = {}; // 객체
-        numbers.all = []; //속성)숫자 배열
-        numbers.prime = []; //속성)소수 배열
+    var numbers = {}; // 객체
+    numbers.all = []; //속성)숫자 배열
+    numbers.prime = []; //속성)소수 배열
 
-        numbers.isPrime = function (number) {
-            for (var i = 2; i < number; i++) {
-                if (number % i == 0) {
-                    return false;
-                }
+    numbers.isPrime = function (number) {
+        for (var i = 2; i < number; i++) {
+            if (number % i == 0) {
+                return false;
             }
-            return true;
-        };
+        }
+        return true;
+    };
 
-        numbers.addAllNumber = function (max_num) {
-            for (var i = 2; i <= max_num; i++) {
-                this.all.push = i;
+    numbers.addAllNumber = function (max_num) {
+        for (var i = 2; i <= max_num; i++) {
+            this.all.push(i);
+        }
+    };//
+
+
+    numbers.calcPrimes = function () {
+        for (var i = 0; i < this.all.length; i++) {
+            var n = this.all[i];
+            if (this.isPrime(n)) {
+                this.prime.push(n);
             }
-        };//
+        }
+    };// 메서드)소수라면 소수 배열에 추가
 
+    numbers.getAllPrimeNumbers = function () {
+        var ret = "";
+        ret += "<h2>전체 소수의 갯수:" + this.prime.length + "</h2>";
+        for (var i = 0; i < this.prime.length; i++) {
+            ret += (i + 1) + "번째 소수: " + this.prime[i] + "<br>";
+        }
+        return ret;
+    };// 메서드) 소수 전체 가져오기
 
-        numbers.calcPrimes = function () {
-            for (var i=0; i < this.all.length; i++) {
-                var n = this.all[i];
-                if (this.isPrime(n)) {
-                    this.prime.push(n);
-                }
-            }
-        };// 메서드)소수라면 소수 배열에 추가
+    numbers.addAllNumber(10000);
+    numbers.calcPrimes();
+    document.getElementById('result').innerHTML = numbers.getAllPrimeNumbers();
 
-        numbers.getAllPrimeNumbers = function () {
-            var ret = "";
-            ret += "<h2>전체 소수의 갯수:" +this.prime.length+ "</h2>";
-            for (var i = 0; i < this.prime.length; i++){
-                ret += (i+1) + "번째 소수" + this.prime[i] + "<br>";
-            }
-            return ret;
-        };// 메서드) 소수 전체 가져오기
-
-        numbers.addAllNumber(10000);
-        numbers.calcPrimes();
-        document.getElementById('result').innerHTML = numbers.getAllPrimeNumbers();
-
-    </script>
+</script>
 </body>
 </html>
