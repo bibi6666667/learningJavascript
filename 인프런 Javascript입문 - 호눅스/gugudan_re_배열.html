@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>구구단 : n단을 출력하기</h2>
+<div id="results"></div>
+<script>
+    var gugudan = {};
+    gugudan.dan = [];
+    gugudan.results = [];
+    gugudan.length = 9;
+
+    gugudan.run = function () {
+        var n = prompt("몇 단을 출력할까요? (2와 9 사이 자연수 입력)");
+        this.dan.shift();
+        this.dan.push(n);
+        for (var i = 1; i <= this.length; i++) {
+            var result = n * i;
+            this.results.push(result);
+        }
+    }
+
+    gugudan.show = function () {
+        var ret = "";
+        ret += "<h2>" + this.dan + "출력</h2>\n";
+        for (var i = 1; i <= this.length; i++) {
+            var result = this.results[i - 1];
+            ret += this.dan + " 곱하기 " + i + " 는 " + result + "<br>\n";
+        }
+        return ret;
+    }
+
+    gugudan.run();
+    document.getElementById("results").innerHTML = gugudan.show();
+
+</script>
+</body>
+</html>
