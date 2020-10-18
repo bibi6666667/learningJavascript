@@ -15,11 +15,16 @@
 
     gugudan.run = function () {
         var n = prompt("몇 단을 출력할까요? (2와 9 사이 자연수 입력)");
-        this.dan.shift();
-        this.dan.push(n);
-        for (var i = 1; i <= this.length; i++) {
-            var result = n * i;
-            this.results.push(result);
+        if (n < 2 || n > 10) {
+            this.dan.length = 0;
+            prompt("2와 9 사이 자연수를 다시 입력해 주세요.")
+        } else {
+            this.dan.length = 0;
+            this.dan.push(n);
+            for (var i = 1; i <= this.length; i++) {
+                var result = n * i;
+                this.results.push(result);
+            }
         }
     }
 

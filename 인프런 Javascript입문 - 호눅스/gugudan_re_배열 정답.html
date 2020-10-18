@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>구구단 전체 출력</h1>
+<script>
+    var result = []; // 비어 있는 배열
+    for (var n = 2; n <= 9; n++) {
+
+        // calculate
+        for (var i = 1; i <= 9; i++) {
+            result[i] = n * 1;
+        }
+        // print
+        document.write("<h2>" + n + "단</h2>")
+        for (var i = 1; i <= 9; i++) {
+            var str = "";
+            str += n;
+            str += " 곱하기 ";
+            str += i;
+            str += " 는 "
+            str += result[i];
+            str += "<br>";
+            document.write(str)
+        }
+    }
+</script>
+</body>
+</html>
