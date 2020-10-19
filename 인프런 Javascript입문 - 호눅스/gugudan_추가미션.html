@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xydan</title>
+</head>
+<body>
+<h1>구구단 : 추가 미션 및 마무리</h1>
+팝업 창에 2부터 9까지의 자연수를 두 번 입력하면, xy단을 출력합니다.<br>
+<button onclick="xydan.main()">xy단 출력하기!</button>
+<script>
+    var xydan = {};
+    xydan.X = 0;
+    xydan.Y = 0;
+    xydan.ret = [];
+
+    // 계산 : x*1, x*2 ... x*y 까지 계산.
+    xydan.calculate = function (x, y) { // 2부터 y까지 곱셈
+        this.ret = [];
+        for (var i = 1; i <= y ; i++) {
+            var result = x * i;
+            this.ret.push(result);
+        }
+        return this.ret;
+    }
+
+    // 출력
+    xydan.print = function (x, y) {
+        document.write("<h4>"+ x + "단</h4>")
+        for (var i = 0; i < y; i++) {
+            document.write(x + "*" + (i+1) + "=" + this.ret[i] + "<br>");
+        }
+    }
+
+    // 메인 : calculate,print를 2부터 x까지 반복
+    xydan.main = function () {
+        var x = this.X;
+        var y = this.Y;
+        x += Number(prompt("(2~9 사이의 자연수 입력) 어떤 숫자로 구구단을 출력할까요?"));
+        y += Number(prompt("(2~9 사이의 자연수 입력) 몇 단까지 구구단을 출력할까요?"));
+        document.write("<h2>" + x + y + "단</h2>")
+        for (var i = 2; i <= x; i++) {
+            xydan.calculate(i, y);
+            xydan.print(i, y);
+        }
+    }
+
+
+</script>
+
+
+</body>
+</html>
