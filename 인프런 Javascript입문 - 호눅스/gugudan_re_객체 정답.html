@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>구구단 완결편</h1>
+<script>
+    gugudan = {};
+    gugudan.result = [];
+    gugudan.current = -1; // 여기에 마지막으로 계산한 단의 정보가 들어간다.
+
+    gugudan.calculate = function(n) {
+        this.current = n; // gugudan.current에 현재 계산하는 단의 정보를 넣는다.
+        for (var i = 0; i < 9; i++) {
+            this.result[i] = n * (i + 1);
+        }
+    }
+
+    gugudan.print = function(){
+        document.write("<h2>" + this.current + "단</h2>");
+        for (var i = 0; i < 9; i++){
+            var x = this.current;
+            var y = i + 1;
+            var z = this.result[i];
+            document.write(x + "*" + y + "=" + z + "<br>");
+        }
+    }
+
+    function main(){
+        for (var i = 2; i <= 9; i++) {
+            gugudan.calculate(i);
+            gugudan.print();
+        }
+    }
+
+    main();
+</script>
+</body>
+</html>
