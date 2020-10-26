@@ -4,34 +4,77 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
+        var arr = [];
         var numArr = [];
         var symArr = [];
+        var result = 0;
+
         var main = function () {
-            var input1 = prompt('숫자를 입력하세요. 더하기는 +, 빼기는 -, 곱하기는 *, 나누기는 /, 종료는 = 입력')
-            numArr.push(input1);
-            while (symbol != "=") {
-                var symbol = prompt('기호를 입력하세요. (더하기는 +, 빼기는 -, 곱하기는 *, 나누기는 /, 종료는 = 입력)')
-                symArr.push(symbol);
+            var input = document.getElementById("input").value;
+            console.log(input)
+            arr = input.split("");
+            console.log(arr);
+            classify();
+        }
+
+        var classify = function(){
+            for (var i = 0; i < arr.length; i++) {
+                if (isNaN(Number(arr[i])) === true) {
+                    symArr.push(arr[i]);
+                } else {
+                    numArr.push(arr[i]);
+                }
             }
-            while (number != "=") {
-                var number = prompt('숫자를 입력하세요. (종료는 = 입력)')
-                numArr.push(number);
-            }
-            console.log(numArr);
-            console.log(symArr);
+            calculate();
         }
 
         var calculate = function(){
-            
+            result = numArr[0];
+            console.log(result);
+            for (var j = 0; j < numArr.length-1; j++) {
+                if (symArr[j] === "+"){
+                    result = Number(result) + Number(numArr[j+1]);
+                };
+                if (symArr[j] === "-"){
+                    result = Number(result) - Number(numArr[j+1]);
+                };
+                if (symArr[j] === "*"){
+                    result = Number(result) * Number(numArr[j+1]);
+                };
+                if (symArr[j] === "/"){
+                    result = Number(result) / Number(numArr[j+1]);
+                };
+                console.log(j, result);
+            }
+            // 5+4-3*2/1 계산하기.
+            // 5+4 = 9 numArr[0] symArr[0] numArr[1]
+            // 9-3 = 6 result symArr[1] numArr[2]
+            // 6*2 = 12 result symArr[2] numArr[3]
+            // 12/1 = 12 result symArr[3] numArr[4]
+            // numArr 0번째 symArr0번째 numArr1번쨰
+            //위의 결과값 symArr1번째 numArr2번째
+            //위의 결과값 symArr2번째 numArr3번째
+            //..
+            print();
         }
+
+        var print = function () {
+            var resultP = document.getElementById("result");
+            resultP.innerHTML = "계산결과 : " + result;
+        }
+
+        main();
 
 
     </script>
 </head>
 <body>
 <h1> 계산기 프로그램 1 </h1>
-입력한 값에 따라 사칙연산을 계산합니다.<br>
-더하기는 +, 빼기는 -, 곱하기는 *, 나누기는 /로 입력<br>
+계산식을 입력하세요.<br>
+- 더하기는 +, 빼기는 -, 곱하기는 *, 나누기는 /로 입력<br>
+- 계산식의 앞부터 순서대로 계산합니다. <br>
+<input type="text" id="input">
 <button onclick="main()">계산하기</button>
+<p id="result"></p>
 </body>
 </html>
