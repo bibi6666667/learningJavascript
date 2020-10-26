@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>계산기 - 조건문 사용</h1>
+- 2개의 숫자와 사칙연산 기호(+ - * /)를 입력하면 계산결과를 출력합니다.<br>
+숫자 1 : <input type="number" id="num1"> <br>
+숫자 2 : <input type="number" id="num2"> <br>
+사칙연산 : <input type="text" id="symbol"> <br>
+<button onclick="calc()">계산하기</button>
+<div id="result"></div>
+
+<script>
+function calc() {
+    var str1 = document.getElementById("num1").value;
+    var str2 = document.getElementById("num2").value;
+    var num1 = Number(str1);
+    var num2 = Number(str2);
+    var symbol = document.getElementById("symbol").value;
+    var result = 0;
+    switch (symbol) {
+        case "+" :
+            result = num1 + num2;
+            break;
+        case "-" :
+            result = num1 - num2;
+            break;
+        case "*" :
+            result = num1 * num2;
+            break;
+        case "/" :
+            result = num1 / num2;
+            break;
+        default :
+            result = "사칙연산 칸에는 +(더하기), -(빼기), *(곱하기), /(나누기)중 하나를 입력하십시오";
+    }
+    document.getElementById("result").innerHTML = "계산결과 : "+result;
+}
+</script>
+</body>
+</html>
