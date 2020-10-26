@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>계산기 - 반복문</h1>
+<div id="result"></div>
+<script>
+    var numArr = [];
+    var symArr = [];
+    var result = 0;
+
+    function calculate() {
+        while (true) {
+            var num = Number(prompt("계산식에 들어갈 숫자를 입력하세요."));
+            numArr.push(num);
+            var sym = prompt("계산식에 들어갈 연산자(+-*/)를 입력하세요. p를 입력하면 종료됩니다.");
+            symArr.push(sym);
+            document.getElementById("result").innerHTML = result;
+            if (sym === "p") {
+                break;
+            }
+        }
+        console.log(numArr, symArr);
+
+
+        if (symArr[0] === "+") {
+            result += numArr[0] + numArr[0 + 1];
+            console.log(numArr[0] + "더하기" + numArr [0 + 1] + "=" + result);
+        } else if (symArr[0] === "-") {
+            result += numArr[0] - numArr[0 + 1];
+            console.log(numArr[0] + "빼기" + numArr [0 + 1] + "=" + result);
+        } else if (symArr[0] === "*") {
+            result += numArr[0] * numArr[0 + 1];
+            console.log(numArr[0] + "곱하기" + numArr [0 + 1] + "=" + result);
+        } else if (symArr[0] === "/") {
+            result += numArr[0] / numArr[0 + 1];
+            console.log(numArr[0] + "나누기" + numArr [0 + 1] + "=" + result);
+        } else {
+            document.getElementById("result").innerHTML = "연산자에는 + - * / 중 하나만 넣어주세요";
+        } // 0번쨰, 1번째 사칙연산 끝
+
+        for (var i = 2; i < numArr.length; i++) {
+            // 이제 결과 & 2번째, 결과& 3번쨰 .. 계산해야
+            if (symArr[i] === "+") {
+                result += result + numArr[i + 1];
+            } else if (symArr[0] === "-") {
+                result += result - numArr[i + 1];
+            } else if (symArr[0] === "*") {
+                result += result * numArr[i + 1];
+            } else if (symArr[0] === "/") {
+                result += result / numArr[i + 1];
+            } else {
+                document.getElementById("result").innerHTML = "연산자에는 + - * / 중 하나만 넣어주세요";
+            }
+        }
+    }
+
+    calculate();
+</script>
+</body>
+</html>
