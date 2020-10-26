@@ -7,20 +7,20 @@
 <body>
 <h1>문자열 계산기 구현하기</h1>
 <div>
-    첫 번째 수 : <input type="text" id="n1">
-    두 번째 수 : <input type="text" id="n2">
-    <button onclick="">실행</button>
+    첫 번째 수 : <input type="text" id="n1"><br>
+    두 번째 수 : <input type="text" id="n2"><br>
+    <button onclick="calc()">실행</button>
 </div>
 <div id="output">여기에 결과가 들어갑니다.</div>
 <script>
-    function main() {
-        console.log("Calculator1");
-        var out = document.getElementById("output"); // <div> 객체 가져오기
-        var str = "";
-        str += "<h2>계산기 구현하기</h2>";
+    function calc(){
+        var str1 = document.getElementById("n1").value;
+        var str2 = document.getElementById("n2").value;
+        var n1 = Number(str1);
+        var n2 = Number(str2);
 
-        var n1 = Number(prompt("첫 번째 값을 입력해 주세요."));
-        var n2 = Number(prompt("두 번째 값을 입력해 주세요."));
+        var out = document.getElementById("output");
+        var str = "";
         str += "더하기 : " + (n1 + n2) + "<br>";
         str += "빼기 : " + (n1 - n2) + "<br>";
         str += "곱하기 : " + (n1 * n2) + "<br>";
@@ -28,7 +28,7 @@
 
         out.innerHTML = str;
     }
-    main();
+
 </script>
 </body>
 </html>
