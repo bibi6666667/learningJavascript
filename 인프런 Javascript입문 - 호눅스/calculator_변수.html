@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>계산기-값 입력 및 사칙연산(변수)</h1>
+<ul>
+    <li>사용자로부터 2개의 숫자 값을 입력 받은 후 2개의 숫자 값을 활용해 사칙연산을 계산한다.</li>
+    <li>계산한 결과 값을 화면에 출력한다.</li>
+</ul>
+- 임의의 숫자 X와 Y를 입력해 주세요.<br>
+- 원하는 버튼을 누르면 사칙연산을 해 드립니다.<br>
+X = <input type="number" id="inputX"> <br>
+Y = <input type="number" id="inputY"> <br>
+X를 Y로.. <br>
+<button onclick="plus()">더하기</button>
+<button onclick="minus()">빼기</button>
+<button onclick="times()">곱하기</button>
+<button onclick="divide()">나누기</button> <br>
+계산 결과 : <span id="result"></span>
+
+<script>
+function plus() {
+    var X = Number(document.getElementById("inputX").value);
+    var Y = Number(document.getElementById("inputY").value);
+    var result = document.getElementById("result");
+    result.innerHTML = X + Y;
+}
+
+function minus() {
+    var X = Number(document.getElementById("inputX").value);
+    var Y = Number(document.getElementById("inputY").value);
+    var result = document.getElementById("result");
+    result.innerHTML = X - Y;
+}
+
+function times() {
+    var X = Number(document.getElementById("inputX").value);
+    var Y = Number(document.getElementById("inputY").value);
+    var result = document.getElementById("result");
+    result.innerHTML = X * Y;
+}
+
+function divide() {
+    var X = Number(document.getElementById("inputX").value);
+    var Y = Number(document.getElementById("inputY").value);
+    var result = document.getElementById("result");
+    result.innerHTML = X / Y;
+}
+</script>
+</body>
+</html>
