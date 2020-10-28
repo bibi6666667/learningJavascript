@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> 계산기 프로그램 1 </h1>
+계산식을 입력하세요.<br>
+- 숫자와 연산자 사이에는 꼭 "띄어쓰기"를 해 주세요.<br>
+- 더하기는 +, 빼기는 -, 곱하기는 *, 나누기는 /로 입력해 주세요.<br>
+- 계산식의 앞부터 순서대로 계산합니다. <br>
+- 다시 계산하려면 새로고침(F5)을 누르세요.<br>
+<input type="text" id="input">
+<button onclick="main()">계산하기</button>
+<div id="result"></div>
+
+  <script>
+        var input = {};
+        var calculator = {};
+        var output = {};
+
+        var main = function () {
+            input.putArr();
+            calculator.classify();
+            calculator.calculate();
+            output.print();
+        }
+
+        input.Arr = [];
+        input.putArr = function () {
+            var input = document.getElementById("input").value;
+            this.Arr = input.split(" ");
+            console.log("arr : " + this.Arr);
+            return this.Arr;
+        }
+
+        calculator.numArr = [];
+        calculator.symArr = [];
+        calculator.classify = function () {
+            var arr = input.putArr();
+            for (var i = 0; i < arr.length; i++) {
+                if (isNaN(Number(arr[i])) === true) {
+                    this.symArr.push(arr[i]);
+                } else {
+                    this.numArr.push(arr[i]);
+                }
+            }
+            console.log(this.numArr);
+            console.log(this.symArr);
+        }
+
+        calculator.result = 0;
+        calculator.calculate = function () {
+            result = this.numArr[0];
+            for (var j = 0; j < this.numArr.length - 1; j++) {
+                if (this.symArr[j] === "+") {
+                    result = Number(result) + Number(this.numArr[j + 1]);
+                }
+                if (this.symArr[j] === "-") {
+                    result = Number(result) - Number(this.numArr[j + 1]);
+                }
+                if (this.symArr[j] === "*") {
+                    result = Number(result) * Number(this.numArr[j + 1]);
+                }
+                if (this.symArr[j] === "/") {
+                    result = Number(result) / Number(this.numArr[j + 1]);
+                }
+            }
+            console.log(j, result);
+            return result;
+        }
+
+        output.out = document.getElementById("result"); // div객체
+        output.print = function () {
+            var result = calculator.calculate();
+            this.out.innerHTML = "계산결과 : " + result;
+        }
+
+    </script>
+</body>
+</html>

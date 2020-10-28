@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>문자열 계산기 구현하기</h1>
+<div>
+    <input type="text" id="input">
+    <button onclick="calc()">확인</button>
+</div>
+<div id="output">여기에 결과가 들어갑니다.</div>
+    <script>
+        var input = {};
+
+        input.init = function (str) {
+            this.list = str.split(" ");
+        }; // str을 넣으면 쪼개서 저장?
+
+        input.empty = function(){
+            return this.list.legnth === 0;
+        };
+
+        input.getValue = function () {
+            var str = this.list.shift();
+            var n = Number(str);
+            return n;
+        }; // getFirst, getSecond가 같은 방식으로 동작하기 떄문에 getValue로 통합.
+
+        input.getOperator = function () {
+            var op = this.list.shift();
+            if (op === "+" || op === "-" || op === "*" || op === "/") {
+                return op;
+            } else { // 사칙연산 외의 값을 넣으면..
+                return "$";
+            }
+        };
+
+        var calculator = {};
+        calculator.calculate = function (first, second, op) {
+            var ret;
+            switch (op) {
+                case "+":
+                ret = first + second;
+                break;
+                case "-":
+                ret = first - second;
+                break;
+                case "*":
+                ret = first * second;
+                break;
+                case "/":
+                ret = first / second;
+                break;
+                default :// 사칙연산 기호 외의 값을 넣으면 계산하지 않기.
+                return NaN;
+            }
+            return ret;
+        };
+
+        var output = {};
+        output.out = document.getElementById("output"); // div객체
+        output.print = function (value) {
+            this.out.innerHTML = "최종 결과값은 " + value + "입니다.";
+        };
+
+        function calc() {
+            var str = document.getElementById("input").value;
+            input.init(str);
+            var result = input.getValue();
+            while (!input.empty()) { // input.empty가 비어있지 않으면.
+                var op = input.getOperator();
+                var second = input.getValue();
+                result = calculator.calculate(result, second, op);
+            }
+            output.print(result);
+        }
+    </script>
+</body>
+</html>
