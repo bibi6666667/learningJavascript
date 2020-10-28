@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>문자열 계산기 구현하기</h1>
+<div id="exit">여기에 결과가 들어갑니다.</div>
+<script>
+    input = {} // getFirstValue, getSecondValue, getOperator
+    output = {} // print
+    calculator = {} // calculate
+
+    input.getFirstValue = function() {
+        var n1 = Number(prompt("첫 번째 숫자를 입력해 주세요."));
+        return n1;
+    }
+
+    input.getSecondValue = function (n) {
+        var n2 = Number(prompt(n + "번째 숫자를 입력해 주세요."));
+        n++;
+        return n2;
+    }
+
+    input.getOperator = function () {
+        while (true) {
+            var op = prompt("연산자를 입력해 주세요.(q를 입력하면 종료)");
+            if (op === "+" || op === "-" || op === "*" || op === "/"
+                || op === "q") {
+                break;
+            } else { // 사칙연산 외의 값을 넣으면..
+                alert("올바른 연산자를 입력해 주세요.")
+            }
+        }
+        return op;
+    }
+
+    calculator.calculate = function (first, second, op) {
+        var ret;
+        switch (op) {
+            case "+":
+                ret = first + second;
+                break;
+            case "-":
+                ret = first - second;
+                break;
+            case "*":
+                ret = first * second;
+                break;
+            case "/":
+                ret = first / second;
+                break;
+        }
+        console.log("return : " + ret);
+        return ret;
+    }
+
+    output.print = function (value) {
+        return "최종 결과값은 " + value + "입니다.";
+    }
+
+    function main() {
+        var num1 = input.getFirstValue(); // 첫 번째 값
+        console.log("num1 : " + num1);
+        var result = num1;
+        var n = 2;
+        while(true) {
+            var op = input.getOperator(); // 연산자
+            console.log("operator : " + op);
+            if (op === "q") {
+                break;
+            }
+            var num2 = input.getSecondValue(n); // 두 번째 값
+            console.log("num2 : " + num2)
+            result = calculator.calculate(result, num2, op);
+        }
+        var exit = document.getElementById("exit");
+        exit.innerHTML = output.print(result);
+    }
+
+    main();
+
+</script>
+</body>
+</html>
