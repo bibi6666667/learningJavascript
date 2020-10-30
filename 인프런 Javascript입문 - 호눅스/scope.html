@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var a = 10
+    console.log(a);
+
+    var foo = function (){
+        var b = 25;
+        console.log(a); // a는 전역변수이므로 함수 내에서도 사용 가능.
+        console.log(b);
+    };
+    foo();
+    b; // b는 지역변수이므로 전역에서 호출하면 b is not defined 에러가 뜬다.
+
+    var foo2 = function (){
+        c = 100;
+        console.log(c);
+    };
+    c; // c는 foo2함수 내에서 선언했지만 var없이 선언해 자동전역변수가 되었다. 절대 비추
+
+    var foo3 = function(v) {
+        console.log(v);
+    }
+    foo3(25);
+    v; // v는 foo3(v)의 매개변수이므로 지역변수와 같은 취급.
+
+    for (var i = 0; i < 5; i++) {
+        console.log(i);
+    } // 0, 1, 2, 3, 4
+    i; // 5. i는 전역변수로 취급된다.
+
+    var foo4 = function () {
+        for (var j = 0; j < 5; j++) {
+            console.log(j);
+        }
+        console.log(j); // for문이 foo4라는 함수 안에 있으므로, j는 지역변수.
+    } // 0, 1, 2, 3, 4, 5가 출력됨. 0~4는 반복문으로부터, 5는 반복문 바깥으로부터.
+    // j가 5가 되는 순간 for문을 빠져나오기 때문에, for문 바깥에서 j=5이다.
+    //j; // j는 지역변수로, 함수 바깥에서 쓸 수 없다.
+
+    const d = 10;
+    //d = 25; // 에러. const로 변수를 선언하면 값을 수정할 수 없음.
+    //const d = 10; // 에러. const로 변수를 선언하면 재선언할 수 없음.
+    // const는 읽기 전용.
+
+    let x = 10;
+    x = 15;// let으로 변수를 선언하면 값을 수정할 수 있음.
+    // let x = 20; // 에러. let도 재선언은 불가능하다.
+    // let은 읽기, 쓰기 겸용이다.
+
+    var foo5 = function () {
+        let y = 20;
+        console.log(y);
+    }
+    foo5(); // 20
+    // y; // 에러. y is not defined
+    // let으로 선언하면 그 블록 내에서만 사용 가능(블록 스코프)
+
+    for (let k = 0; k < 5; k++) {
+        console.log(k);
+    }
+    //k; // 에러. let으로 선언한 변수는 var과 달리 블록스코프이므로
+    // for문 블록을 벗어나면 사용할 수 없다.
+
+</cript>
+</body>
+</html>
