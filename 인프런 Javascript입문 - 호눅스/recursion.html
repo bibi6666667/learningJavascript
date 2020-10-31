@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>재귀 연습</title>
+</head>
+<body>
+<h1>재귀 연습</h1>
+rsum(a, b) : a부터 b까지를 더해서 리턴해 주는 함수를 만들어 보자.
+<script>
+    var rsum = function (a, b) {
+        if (a > b) { // 예외처리 : a가 b보다 더 큰 경우
+            return NaN;
+        } else if (a == b) {// 종료조건 : a와 b가 같아지면 종료.
+            return a;
+            //b가 a만큼 작아지면..
+        }
+        return b + rsum(a, b -1);
+        // 예를 들어, 1에서 5까지 더하기 = 5 + (1에서 4까지 더하기) 이므로.
+    }
+    // 테스트 코드 : console.log(함수(대입값) === 함수 결과값).
+    // true면 성공.
+    console.log(rsum(1,1) === 1);
+    console.log(rsum(0,0) === 0);
+    console.log(rsum(1,2) === 3);
+    console.log(rsum(2,10) === 54);
+
+</script>
+</body>
+</html>

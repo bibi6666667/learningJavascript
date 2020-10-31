@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>재귀로 팩토리얼 구현하기</h1>
+<script>
+var fact = function (n){
+    if (n < 0) { // 예외처리 : n이 0보다 작을 때.
+        return NaN;
+    }
+    if (n == 1 || n == 0) {
+        return 1;
+    }
+    return n * fact(n - 1);
+};
+
+// 테스트 코드 : true가 나와야 하는 코드를 먼저 짜고,
+// 모든 테스트 코드가 true가 나올 때까지 코딩딩한.
+console.log(fact(1) === 1);
+console.log(fact(2) === 2);
+console.log(fact(3) === 6);
+console.log(fact(0) === 1);
+console.log(!fact(-1));
+</script>
+</body>
+</html>
